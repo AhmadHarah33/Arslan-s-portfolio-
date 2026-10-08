@@ -92,7 +92,28 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 }
 
 /* hero */
-.hero { padding-block: clamp(4rem, 10vw, 7.5rem) clamp(2.5rem, 5vw, 3.5rem); }
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(220px, 26vw, 300px);
+  gap: 2rem 4rem;
+  align-items: center;
+  padding-block: clamp(3.5rem, 8vw, 6.5rem) clamp(2.5rem, 5vw, 3.5rem);
+}
+.hero__text { min-width: 0; }
+.hero__photo {
+  grid-column: 2;
+  grid-row: 1;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 6px;
+  background: var(--soft);
+}
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; gap: 1.75rem; }
+  .hero__photo { grid-column: 1; width: 132px; border-radius: 50%; aspect-ratio: 1; object-position: 50% 30%; }
+}
 .hero__role { color: var(--navy); font-weight: 500; font-size: var(--t-md); }
 .hero__name {
   margin-block-start: .4rem;
