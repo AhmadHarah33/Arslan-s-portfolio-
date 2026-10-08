@@ -1,36 +1,34 @@
-# Ahmed Arslan — terminal portfolio
+# Ahmed Arslan — portfolio
 
-A portfolio site that works like a terminal on a dental-lab machine. Visitors type commands
-(or tap the chips at the bottom) to see my work, the machines I service, and my projects.
+Personal site for Ahmed Arslan, after-sales engineer for digital dental equipment and software
+engineer. Available in English, 简体中文, العربية (right-to-left) and Türkçe.
 
-## Commands
+The earlier terminal-style version lives on at [`/terminal/`](terminal/).
 
-| Command | Shows |
+## Editing
+
+| What | Where |
 | --- | --- |
-| `help` | All commands |
-| `whoami` | Who I am |
-| `experience` | After-sales engineering at Mars Med Dent |
-| `machines` / `software` | Equipment and lab software I support |
-| `projects`, `open <name>` | Things I've built |
-| `ssh <machine>` | A simulated remote repair session (`xtcera`, `riton`, `aura`, `furnace`, `dof`) |
-| `languages`, `skills`, `education` | The rest of the CV |
-| `hire`, `contact` | The short pitch and how to reach me |
-| `neofetch`, `theme <uv\|furnace\|zirconia>` | Extras |
+| English text | `index.html` (every translatable element has a `data-i18n` key) |
+| Chinese, Arabic, Turkish text | `assets/js/i18n.js`, same keys |
+| Contact details (email, WeChat, WhatsApp, LinkedIn) | `CONTACT` at the top of `assets/js/site.js`; empty entries stay hidden |
+| Photos | drop files into `assets/img/`: `portrait.jpg`, `work-1.jpg` … `work-6.jpg` |
+| CV | put `cv.pdf` in `assets/`; the Download CV button appears by itself |
 
-A link like `…/#projects` opens the site and runs that command.
+Language is picked from the visitor's browser, remembered after they switch, and can be
+forced with a link like `…/#zh`.
 
-## Editing content
+## Built for visitors in China
 
-All text lives in [`js/data.js`](js/data.js). Fill in `contact` (email, LinkedIn, WeChat,
-WhatsApp); empty entries are hidden.
+No Google Fonts, CDNs or other third-party requests: the IBM Plex fonts are self-hosted in
+`assets/fonts/` (SIL Open Font License), and Chinese text uses the system's PingFang /
+Microsoft YaHei. Note that GitHub Pages and Vercel can still be slow from mainland China;
+see the hosting notes in the chat history or ask before choosing a host.
 
-## Running and hosting
+## Running locally
 
-No build step. Open `index.html`, or serve the folder:
+No build step:
 
 ```bash
 python3 -m http.server 8000
 ```
-
-To publish on GitHub Pages: repository **Settings → Pages → Deploy from a branch**, pick the
-branch and `/ (root)`.
